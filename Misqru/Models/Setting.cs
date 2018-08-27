@@ -22,7 +22,7 @@ namespace Misqru.Models
 		/// </summary>
 		public static async Task<Setting> LoadAsync()
 		{
-			var setting = await LoadAsync<Setting>("settings.json");
+			var setting = await LoadAsync<Setting>("setting.json");
 
 			return setting;
 		}
@@ -32,7 +32,7 @@ namespace Misqru.Models
 		/// </summary>
 		public Task SaveAsync()
 		{
-			return SaveAsync("settings.json");
+			return SaveAsync("setting.json");
 		}
 
 		#endregion JsonSerializable
