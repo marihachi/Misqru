@@ -26,7 +26,6 @@ namespace Misqru
 				if (account != null)
 				{
 					var instance = this.setting.Instances.Find(i => i.HostAndAppId == account.HostAndAppId);
-					await this.setting.SaveAsync();
 
 					// リストに項目を追加
 					this.listView1.Items.Add(new ListViewItem(new[] { $"{account.Username}@{instance.Host}" })
