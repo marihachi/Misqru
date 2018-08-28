@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\User.cs" />
     <Compile Include="Models\MisskeyAccount.cs" />
     <Compile Include="Models\Setting.cs" />
     <Compile Include="SettingForm.cs">
