@@ -1,8 +1,8 @@
 ﻿using Misqru.Models;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Windows.Forms;
 
 namespace Misqru
@@ -12,6 +12,11 @@ namespace Misqru
 		public Form1()
 		{
 			InitializeComponent();
+
+			JsonConvert.DefaultSettings = () => new JsonSerializerSettings
+			{
+				NullValueHandling = NullValueHandling.Ignore
+			};
 		}
 
 		private Setting setting;
@@ -47,10 +52,13 @@ namespace Misqru
 				var param = new Dictionary<string, object>
 				{
 					["userId"] = this.api.ID,
-					["limit"] = 100,
-					["cursor"] = this.nextCursor
+					["limit"] = 100
 				};
-				res = await this.api.Request("followingUsers/following", param);
+				if (this.nextCursor != null)
+				{
+					param.Add("cursor", this.nextCursor);
+				}
+				res = await this.api.Request("users/following", param);
 			}
 			catch
 			{
@@ -60,7 +68,7 @@ namespace Misqru
 
 			this.nextCursor = res.next.Value;
 
-			foreach (JObject t in res.followingUsers)
+			foreach (JObject t in res.users)
 			{
 				var user = User.FromJObject(t);
 
@@ -88,14 +96,14 @@ namespace Misqru
 				["userId"] = this.api.ID,
 				["limit"] = 100
 			};
-			var res = await this.api.Request("followingUsers/following", param);
+			var res = await this.api.Request("users/following", param);
 
 			this.nextCursor = res.next.Value;
 
 			this.followingUsers.Clear();
 			this.listView1.Items.Clear();
 
-			foreach (JObject t in res.followingUsers)
+			foreach (JObject t in res.users)
 			{
 				var user = User.FromJObject(t);
 
