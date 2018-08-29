@@ -1,6 +1,6 @@
 ﻿namespace Misqru
 {
-	partial class AddAccountForm
+	public partial class AddAccountForm
 	{
 		/// <summary>
 		/// Required designer variable.

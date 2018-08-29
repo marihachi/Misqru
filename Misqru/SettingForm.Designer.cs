@@ -1,6 +1,6 @@
 ﻿namespace Misqru
 {
-	partial class SettingForm
+	public partial class SettingForm
 	{
 		/// <summary>
 		/// Required designer variable.

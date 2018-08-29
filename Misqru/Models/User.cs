@@ -16,5 +16,13 @@ namespace Misqru.Models
 		public string Name { get; set; }
 
 		public string Description { get; set; }
+
+		public bool IsFollowing { get; set; }
+
+		public bool IsFollowed { get; set; }
+
+		public bool IsLocked { get; set; }
+
+		public bool HasPendingFollowRequestFromYou { get; set; }
 	}
 }
