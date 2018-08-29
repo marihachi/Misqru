@@ -62,9 +62,9 @@ namespace Misqru
 			this.users.Clear();
 			this.listView1.Items.Clear();
 
-			foreach (JToken t in res.users)
+			foreach (JObject t in res.users)
 			{
-				var user = t.ToObject<User>();
+				var user = User.FromJObject(t);
 
 				this.users.Add(user);
 

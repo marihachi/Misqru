@@ -6,11 +6,6 @@ namespace Misqru.Models
 	{
 		public MisskeyAccount(string hostAndAppId, string userToken, string username, string id)
 		{
-			Set(hostAndAppId, userToken, username, id);
-		}
-
-		public void Set(string hostAndAppId, string userToken, string username, string id)
-		{
 			this.HostAndAppId = hostAndAppId;
 			this.UserToken = userToken;
 			this.Username = username;

@@ -6,8 +6,6 @@ namespace Misqru.Models
 {
 	public class Setting : JsonSerializable
 	{
-		public Setting() { }
-
 		public int _Version { get; set; } = 1;
 
 		public List<MisskeyInstance> Instances { get; set; } = new List<MisskeyInstance>();

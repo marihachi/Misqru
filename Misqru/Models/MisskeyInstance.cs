@@ -8,11 +8,6 @@ namespace Misqru.Models
 	{
 		public MisskeyInstance(string host, string appSecret, string appId = null)
 		{
-			Set(host, appSecret, appId);
-		}
-
-		public void Set(string host, string appSecret, string appId = null)
-		{
 			this.Host = host;
 			this.AppSecret = appSecret;
 			this.AppId = appId;

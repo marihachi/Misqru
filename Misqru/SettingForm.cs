@@ -15,7 +15,7 @@ namespace Misqru
 
 		private Setting setting;
 
-		private async void addInstanceButton_Click(object sender, EventArgs e)
+		private void addInstanceButton_Click(object sender, EventArgs e)
 		{
 			var f = new AddAccountForm(this.setting);
 			if (f.ShowDialog() == DialogResult.OK)
