@@ -1,5 +1,6 @@
 ﻿using Misqru.Models;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Windows.Forms;
 
@@ -15,6 +16,10 @@ namespace Misqru
 		}
 
 		private Setting setting;
+
+		private List<MisskeyInstance> instances => this.setting.Instances;
+
+		private List<MisskeyAccount> accounts => this.setting.Accounts;
 
 		public MisskeyAccount Data { get; private set; }
 
@@ -47,7 +52,7 @@ namespace Misqru
 			}
 
 			// 既に保存されているインスタンスを取得
-			var instance = this.setting.Instances.Find(i => i.Host == uri.Host);
+			var instance = this.instances.FindByHost(uri.Host);
 
 			var isNewInstance = (instance == null);
 
@@ -69,7 +74,7 @@ namespace Misqru
 				}
 
 				// Instancesに追加
-				this.setting.Instances.Add(instance);
+				this.instances.Add(instance);
 				await this.setting.SaveAsync();
 			}
 
@@ -80,10 +85,10 @@ namespace Misqru
 			this.label2.Visible = false;
 
 			// 新しいインスタンスだったとき or Accountsに存在しなければ
-			if (isNewInstance || this.setting.Accounts.FindIndex(i => i.UserToken == account.UserToken && i.HostAndAppId == instance.HostAndAppId) == -1)
+			if (isNewInstance || this.accounts.FindIndex(i => i.Token == account.Token && i.Host == instance.Host) == -1)
 			{
 				// Accountsに追加
-				this.setting.Accounts.Add(account);
+				this.accounts.Add(account);
 				await this.setting.SaveAsync();
 
 				this.Data = account;

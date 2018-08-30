@@ -1,5 +1,6 @@
 ﻿using Misqru.Models;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Windows.Forms;
 
@@ -16,6 +17,8 @@ namespace Misqru
 
 		private Setting setting;
 
+		private List<MisskeyAccount> accounts => this.setting.Accounts;
+
 		private void addInstanceButton_Click(object sender, EventArgs e)
 		{
 			var f = new AddAccountForm(this.setting);
@@ -26,10 +29,8 @@ namespace Misqru
 				// 新しくAccountsに追加された場合
 				if (account != null)
 				{
-					var instance = account.FindInstance(this.setting);
-
 					// リストに項目を追加
-					this.listView1.Items.Add(new ListViewItem(new[] { $"{account.Username}@{instance.Host}" })
+					this.listView1.Items.Add(new ListViewItem(new[] { $"{account.Username}@{account.Host}" })
 					{
 						Tag = account
 					});
@@ -43,7 +44,7 @@ namespace Misqru
 			var account = (MisskeyAccount)item.Tag;
 
 			// Accountsから削除
-			this.setting.Accounts.Remove(account);
+			this.accounts.Remove(account);
 			await this.setting.SaveAsync();
 
 			// リストの項目を削除
@@ -61,11 +62,9 @@ namespace Misqru
 			this.removeInstanceButton.Enabled = false;
 
 			// リストの項目を構成
-			foreach (var account in this.setting.Accounts)
+			foreach (var account in this.accounts)
 			{
-				var instance = this.setting.Instances.Find(i => i.HostAndAppId == account.HostAndAppId);
-
-				this.listView1.Items.Add(new ListViewItem(new[] { $"{account.Username}@{instance.Host}" })
+				this.listView1.Items.Add(new ListViewItem(new[] { $"{account.Username}@{account.Host}" })
 				{
 					Tag = account
 				});

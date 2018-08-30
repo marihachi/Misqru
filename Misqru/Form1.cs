@@ -20,7 +20,21 @@ namespace Misqru
 		}
 
 		private Setting setting;
-		private Misq.Me api;
+
+		private List<MisskeyInstance> instances => this.setting.Instances;
+
+		private List<MisskeyAccount> accounts => this.setting.Accounts;
+
+		private MisskeyAccount selectedAccount
+		{
+			get {
+				if (this.toolStripComboBox1.SelectedIndex == -1)
+					return null;
+
+				return this.accounts[this.toolStripComboBox1.SelectedIndex];
+			}
+		}
+
 		private List<User> followingUsers = new List<User>();
 
 		private string nextCursor;
@@ -29,13 +43,29 @@ namespace Misqru
 		{
 			this.setting = await Setting.LoadAsync();
 
-			// 構成
-			foreach(var account in this.setting.Accounts)
+			// 設定ファイルのバージョンを判定
+			if (this.setting._Version != Meta.SettingLatestVersion)
 			{
-				var instance = this.setting.Instances.Find(i => i.HostAndAppId == account.HostAndAppId);
-
-				this.toolStripComboBox1.Items.Add($"{account.Username}@{instance.Host}");
+				if(this.setting._Version == 1)
+				{
+					// "setting file is old format. please remove setting.json and re-execute Misqru."
+					MessageBox.Show("古い形式の設定ファイルです。\r\nsetting.jsonを削除してMisqruを再実行してください。", "情報", MessageBoxButtons.OK, MessageBoxIcon.Information);
+					this.Close();
+					return;
+				}
+				else
+				{
+					throw new NotSupportedException("setting file is unknown version");
+				}
 			}
+
+			// 構成
+			foreach (var account in this.accounts)
+			{
+				this.toolStripComboBox1.Items.Add($"{account.Username}@{account.Host}");
+			}
+
+			updateDisplayedProfile(null);
 		}
 
 		private void toolStripButton1_Click(object sender, EventArgs e)
@@ -46,19 +76,21 @@ namespace Misqru
 
 		private async void toolStripButton2_Click(object sender, EventArgs e)
 		{
+			if (this.selectedAccount == null) return;
+
 			dynamic res;
 			try
 			{
 				var param = new Dictionary<string, object>
 				{
-					["userId"] = this.api.ID,
+					["userId"] = this.selectedAccount.Id,
 					["limit"] = 100
 				};
 				if (this.nextCursor != null)
 				{
 					param.Add("cursor", this.nextCursor);
 				}
-				res = await this.api.Request("users/following", param);
+				res = await this.selectedAccount.Request("users/following", param);
 			}
 			catch
 			{
@@ -82,21 +114,15 @@ namespace Misqru
 
 		private async void toolStripComboBox1_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			var index = this.toolStripComboBox1.SelectedIndex;
-			var accountData = this.setting.Accounts[index];
-			var instanceData = accountData.FindInstance(this.setting);
+			if (this.selectedAccount == null) return;
 
-			dynamic data = new JObject();
-			data.id = accountData.Id;
-
-			this.api = new Misq.Me($"https://{instanceData.Host}", accountData.UserToken, instanceData.AppSecret, data);
-
+			// フォロー一覧を取得
 			var param = new Dictionary<string, object>
 			{
-				["userId"] = this.api.ID,
+				["userId"] = this.selectedAccount.Id,
 				["limit"] = 100
 			};
-			var res = await this.api.Request("users/following", param);
+			var res = await this.selectedAccount.Request("users/following", param);
 
 			this.nextCursor = res.next.Value;
 
@@ -161,6 +187,8 @@ namespace Misqru
 
         private async void button1_Click(object sender, EventArgs e)
         {
+			if (this.selectedAccount == null) return;
+
 			var listItem = this.listView1.SelectedItems[0];
 			var user = (User)listItem.Tag;
 
@@ -179,7 +207,7 @@ namespace Misqru
 
 			try
 			{
-				var obj = (JObject)await this.api.Request(endpoint, new Dictionary<string, object> { ["userId"] = user.Id });
+				var obj = (JObject)await this.selectedAccount.Request(endpoint, new Dictionary<string, object> { ["userId"] = user.Id });
 				var updated = User.FromJObject(obj);
 
 				// 保持されているユーザデータを更新

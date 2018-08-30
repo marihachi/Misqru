@@ -4,9 +4,14 @@ using System.Threading.Tasks;
 
 namespace Misqru.Models
 {
+	public static class Meta
+	{
+		public const int SettingLatestVersion = 2;
+	}
+
 	public class Setting : JsonSerializable
 	{
-		public int _Version { get; set; } = 1;
+		public int _Version { get; set; } = Meta.SettingLatestVersion;
 
 		public List<MisskeyInstance> Instances { get; set; } = new List<MisskeyInstance>();
 

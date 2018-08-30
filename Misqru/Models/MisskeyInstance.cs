@@ -1,24 +1,19 @@
-﻿using Newtonsoft.Json;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Misqru.Models
 {
 	public class MisskeyInstance
 	{
-		public MisskeyInstance(string host, string appSecret, string appId = null)
+		public MisskeyInstance(string host, string appSecret)
 		{
 			this.Host = host;
 			this.AppSecret = appSecret;
-			this.AppId = appId;
 		}
 
 		public string Host { get; set; }
-		public string AppSecret { get; set; }
-		public string AppId { get; set; }
 
-		[JsonIgnore]
-		public string HostAndAppId { get => $"{this.AppId}@{this.Host}"; }
+		public string AppSecret { get; set; }
 
 		public static async Task<MisskeyInstance> Register(string host, string appName, string appDescription, IEnumerable<string> appPermissions)
 		{
@@ -29,7 +24,7 @@ namespace Misqru.Models
 
 			var res = await Misq.Core.Request($"https://{host}", "app/create", param);
 
-			return new MisskeyInstance(host, res.secret.Value, res.id.Value);
+			return new MisskeyInstance(host, res.secret.Value);
 		}
 	}
 }
