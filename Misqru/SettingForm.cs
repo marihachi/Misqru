@@ -1,5 +1,6 @@
 ﻿using Misqru.Models;
 using System;
+using System.Diagnostics;
 using System.Windows.Forms;
 
 namespace Misqru
@@ -69,6 +70,11 @@ namespace Misqru
 					Tag = account
 				});
 			}
+		}
+
+		private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+		{
+			Process.Start("https://github.com/marihachi/Misqru/blob/master/LICENSE.md");
 		}
 	}
 }

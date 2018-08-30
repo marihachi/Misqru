@@ -35,6 +35,7 @@
 			this.tabControl1 = new System.Windows.Forms.TabControl();
 			this.tabPage1 = new System.Windows.Forms.TabPage();
 			this.tabPage2 = new System.Windows.Forms.TabPage();
+			this.linkLabel1 = new System.Windows.Forms.LinkLabel();
 			this.tabControl1.SuspendLayout();
 			this.tabPage1.SuspendLayout();
 			this.SuspendLayout();
@@ -42,7 +43,7 @@
 			// addInstanceButton
 			// 
 			this.addInstanceButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.addInstanceButton.Location = new System.Drawing.Point(305, 6);
+			this.addInstanceButton.Location = new System.Drawing.Point(328, 6);
 			this.addInstanceButton.Name = "addInstanceButton";
 			this.addInstanceButton.Size = new System.Drawing.Size(80, 27);
 			this.addInstanceButton.TabIndex = 1;
@@ -63,7 +64,7 @@
 			this.listView1.Location = new System.Drawing.Point(6, 6);
 			this.listView1.MultiSelect = false;
 			this.listView1.Name = "listView1";
-			this.listView1.Size = new System.Drawing.Size(293, 238);
+			this.listView1.Size = new System.Drawing.Size(316, 263);
 			this.listView1.Sorting = System.Windows.Forms.SortOrder.Ascending;
 			this.listView1.TabIndex = 2;
 			this.listView1.UseCompatibleStateImageBehavior = false;
@@ -78,7 +79,7 @@
 			// removeInstanceButton
 			// 
 			this.removeInstanceButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.removeInstanceButton.Location = new System.Drawing.Point(305, 39);
+			this.removeInstanceButton.Location = new System.Drawing.Point(328, 39);
 			this.removeInstanceButton.Name = "removeInstanceButton";
 			this.removeInstanceButton.Size = new System.Drawing.Size(80, 27);
 			this.removeInstanceButton.TabIndex = 1;
@@ -97,7 +98,7 @@
 			this.tabControl1.Name = "tabControl1";
 			this.tabControl1.Padding = new System.Drawing.Point(0, 0);
 			this.tabControl1.SelectedIndex = 0;
-			this.tabControl1.Size = new System.Drawing.Size(399, 281);
+			this.tabControl1.Size = new System.Drawing.Size(422, 306);
 			this.tabControl1.TabIndex = 5;
 			// 
 			// tabPage1
@@ -108,7 +109,7 @@
 			this.tabPage1.Location = new System.Drawing.Point(4, 27);
 			this.tabPage1.Name = "tabPage1";
 			this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPage1.Size = new System.Drawing.Size(391, 250);
+			this.tabPage1.Size = new System.Drawing.Size(414, 275);
 			this.tabPage1.TabIndex = 0;
 			this.tabPage1.Text = "アカウント";
 			this.tabPage1.UseVisualStyleBackColor = true;
@@ -123,11 +124,23 @@
 			this.tabPage2.Text = "About";
 			this.tabPage2.UseVisualStyleBackColor = true;
 			// 
+			// linkLabel1
+			// 
+			this.linkLabel1.AutoSize = true;
+			this.linkLabel1.Location = new System.Drawing.Point(12, 315);
+			this.linkLabel1.Name = "linkLabel1";
+			this.linkLabel1.Size = new System.Drawing.Size(51, 18);
+			this.linkLabel1.TabIndex = 6;
+			this.linkLabel1.TabStop = true;
+			this.linkLabel1.Text = "License";
+			this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+			// 
 			// SettingForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 18F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(411, 293);
+			this.ClientSize = new System.Drawing.Size(434, 342);
+			this.Controls.Add(this.linkLabel1);
 			this.Controls.Add(this.tabControl1);
 			this.Font = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
 			this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -140,6 +153,7 @@
 			this.tabControl1.ResumeLayout(false);
 			this.tabPage1.ResumeLayout(false);
 			this.ResumeLayout(false);
+			this.PerformLayout();
 
 		}
 
@@ -151,5 +165,6 @@
 		private System.Windows.Forms.TabPage tabPage1;
 		private System.Windows.Forms.TabPage tabPage2;
 		private System.Windows.Forms.ColumnHeader columnHeader1;
+		private System.Windows.Forms.LinkLabel linkLabel1;
 	}
 }
