@@ -19,6 +19,8 @@ namespace Misqru
 
 		private List<MisskeyAccount> accounts => this.setting.Accounts;
 
+		public bool NeedUpdateAccountsList { get; set; }
+
 		private void addInstanceButton_Click(object sender, EventArgs e)
 		{
 			var f = new AddAccountForm(this.setting);
@@ -34,6 +36,8 @@ namespace Misqru
 					{
 						Tag = account
 					});
+
+					this.NeedUpdateAccountsList = true;
 				}
 			}
 		}
@@ -49,6 +53,8 @@ namespace Misqru
 
 			// リストの項目を削除
 			this.listView1.Items.Remove(item);
+
+			this.NeedUpdateAccountsList = true;
 		}
 
 		private void listView1_SelectedIndexChanged(object sender, EventArgs e)

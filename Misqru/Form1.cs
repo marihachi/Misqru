@@ -78,11 +78,25 @@ namespace Misqru
 		{
 			var f = new SettingForm(this.setting);
 			f.ShowDialog();
+
+			// 設定画面上でアカウント一覧に対して変更があった場合
+			if (f.NeedUpdateAccountsList)
+			{
+				// 再構成
+				this.toolStripComboBox1.Items.Clear();
+				foreach (var account in this.accounts)
+				{
+					this.toolStripComboBox1.Items.Add($"{account.Username}@{account.Host}");
+				}
+			}
 		}
 
 		private async void toolStripButton2_Click(object sender, EventArgs e)
 		{
 			if (this.selectedAccount == null) return;
+
+			// 「さらに取得」ボタンを無効化
+			this.toolStripButton2.Enabled = false;
 
 			dynamic res;
 			try
@@ -106,7 +120,7 @@ namespace Misqru
 
 			this.nextCursor = res.next.Value;
 
-			// 「さらに取得」ボタンの有効状態
+			// 「さらに取得」ボタンを必要に応じて有効化
 			this.toolStripButton2.Enabled = (this.nextCursor != null);
 
 			foreach (JObject t in res.users)
@@ -129,6 +143,9 @@ namespace Misqru
 
 		private async void toolStripComboBox1_SelectedIndexChanged(object sender, EventArgs e)
 		{
+			// 「さらに取得」ボタンを無効化
+			this.toolStripButton2.Enabled = false;
+
 			if (this.selectedAccount == null) return;
 
 			// フォロー一覧を取得
@@ -141,7 +158,7 @@ namespace Misqru
 
 			this.nextCursor = res.next.Value;
 
-			// 「さらに取得」ボタンの有効状態
+			// 「さらに取得」ボタンを必要に応じて有効化
 			this.toolStripButton2.Enabled = (this.nextCursor != null);
 
 			this.followingUsers.Clear();
