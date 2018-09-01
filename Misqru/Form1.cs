@@ -66,7 +66,12 @@ namespace Misqru
 				this.toolStripComboBox1.Items.Add($"{account.Username}@{account.Host}");
 			}
 
+			// 「さらに取得」ボタンの有効状態
+			this.toolStripButton2.Enabled = false;
+
 			updateDisplayedProfile(null);
+
+			this.listView1.Focus();
 		}
 
 		private void toolStripButton1_Click(object sender, EventArgs e)
@@ -101,6 +106,9 @@ namespace Misqru
 
 			this.nextCursor = res.next.Value;
 
+			// 「さらに取得」ボタンの有効状態
+			this.toolStripButton2.Enabled = (this.nextCursor != null);
+
 			foreach (JObject t in res.users)
 			{
 				var user = User.FromJObject(t);
@@ -133,6 +141,9 @@ namespace Misqru
 
 			this.nextCursor = res.next.Value;
 
+			// 「さらに取得」ボタンの有効状態
+			this.toolStripButton2.Enabled = (this.nextCursor != null);
+
 			this.followingUsers.Clear();
 			this.listView1.Items.Clear();
 
@@ -159,6 +170,7 @@ namespace Misqru
 
 			this.button1.Enabled = isUserSelected;
 			this.linkLabel1.Enabled = isUserSelected;
+			this.textBox1.Enabled = isUserSelected;
 
 			if (isUserSelected)
 			{
@@ -169,7 +181,7 @@ namespace Misqru
 				}
 
 				this.label1.Text = $"{user.Name} @{usernameWithHost}";
-				this.label2.Text = user.Description;
+				this.textBox1.Text = user.Description;
 
 				if (user.HasPendingFollowRequestFromYou)
 				{
@@ -189,7 +201,7 @@ namespace Misqru
 			else
 			{
 				this.label1.Text = "";
-				this.label2.Text = "";
+				this.textBox1.Text = "";
 				this.button1.Text = "フォロー";
 			}
 		}

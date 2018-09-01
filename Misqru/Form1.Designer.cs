@@ -40,11 +40,11 @@
 			this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.splitter1 = new System.Windows.Forms.Splitter();
 			this.panel1 = new System.Windows.Forms.Panel();
-			this.label2 = new System.Windows.Forms.Label();
 			this.label1 = new System.Windows.Forms.Label();
 			this.button1 = new System.Windows.Forms.Button();
 			this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+			this.textBox1 = new System.Windows.Forms.TextBox();
 			this.toolStrip1.SuspendLayout();
 			this.toolStripContainer1.ContentPanel.SuspendLayout();
 			this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
@@ -67,7 +67,7 @@
 			this.toolStrip1.Location = new System.Drawing.Point(0, 0);
 			this.toolStrip1.Name = "toolStrip1";
 			this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-			this.toolStrip1.Size = new System.Drawing.Size(686, 26);
+			this.toolStrip1.Size = new System.Drawing.Size(584, 26);
 			this.toolStrip1.Stretch = true;
 			this.toolStrip1.TabIndex = 2;
 			this.toolStrip1.Text = "toolStrip1";
@@ -122,11 +122,11 @@
 			this.toolStripContainer1.ContentPanel.Controls.Add(this.listView1);
 			this.toolStripContainer1.ContentPanel.Controls.Add(this.splitter1);
 			this.toolStripContainer1.ContentPanel.Controls.Add(this.panel1);
-			this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(686, 378);
+			this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(584, 576);
 			this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.toolStripContainer1.Location = new System.Drawing.Point(0, 0);
 			this.toolStripContainer1.Name = "toolStripContainer1";
-			this.toolStripContainer1.Size = new System.Drawing.Size(686, 404);
+			this.toolStripContainer1.Size = new System.Drawing.Size(584, 602);
 			this.toolStripContainer1.TabIndex = 3;
 			this.toolStripContainer1.Text = "toolStripContainer1";
 			// 
@@ -145,7 +145,7 @@
 			this.listView1.Location = new System.Drawing.Point(0, 0);
 			this.listView1.MultiSelect = false;
 			this.listView1.Name = "listView1";
-			this.listView1.Size = new System.Drawing.Size(686, 263);
+			this.listView1.Size = new System.Drawing.Size(584, 419);
 			this.listView1.TabIndex = 3;
 			this.listView1.UseCompatibleStateImageBehavior = false;
 			this.listView1.View = System.Windows.Forms.View.Details;
@@ -160,36 +160,24 @@
 			// 
 			this.splitter1.BackColor = System.Drawing.SystemColors.ActiveBorder;
 			this.splitter1.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.splitter1.Location = new System.Drawing.Point(0, 263);
+			this.splitter1.Location = new System.Drawing.Point(0, 419);
 			this.splitter1.Name = "splitter1";
-			this.splitter1.Size = new System.Drawing.Size(686, 4);
+			this.splitter1.Size = new System.Drawing.Size(584, 4);
 			this.splitter1.TabIndex = 2;
 			this.splitter1.TabStop = false;
 			// 
 			// panel1
 			// 
 			this.panel1.BackColor = System.Drawing.Color.White;
+			this.panel1.Controls.Add(this.textBox1);
 			this.panel1.Controls.Add(this.linkLabel1);
-			this.panel1.Controls.Add(this.label2);
 			this.panel1.Controls.Add(this.label1);
 			this.panel1.Controls.Add(this.button1);
 			this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.panel1.Location = new System.Drawing.Point(0, 267);
+			this.panel1.Location = new System.Drawing.Point(0, 423);
 			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(686, 111);
+			this.panel1.Size = new System.Drawing.Size(584, 153);
 			this.panel1.TabIndex = 1;
-			// 
-			// label2
-			// 
-			this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.label2.AutoEllipsis = true;
-			this.label2.Location = new System.Drawing.Point(12, 38);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(539, 64);
-			this.label2.TabIndex = 1;
-			this.label2.Text = "プロフィール";
 			// 
 			// label1
 			// 
@@ -199,14 +187,14 @@
 			this.label1.Font = new System.Drawing.Font("メイリオ", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
 			this.label1.Location = new System.Drawing.Point(12, 10);
 			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(539, 23);
+			this.label1.Size = new System.Drawing.Size(449, 23);
 			this.label1.TabIndex = 1;
 			this.label1.Text = "名前";
 			// 
 			// button1
 			// 
 			this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.button1.Location = new System.Drawing.Point(570, 6);
+			this.button1.Location = new System.Drawing.Point(468, 6);
 			this.button1.Name = "button1";
 			this.button1.Size = new System.Drawing.Size(104, 27);
 			this.button1.TabIndex = 0;
@@ -221,8 +209,9 @@
 			// 
 			// linkLabel1
 			// 
+			this.linkLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.linkLabel1.AutoSize = true;
-			this.linkLabel1.Location = new System.Drawing.Point(569, 38);
+			this.linkLabel1.Location = new System.Drawing.Point(467, 38);
 			this.linkLabel1.Name = "linkLabel1";
 			this.linkLabel1.Size = new System.Drawing.Size(90, 18);
 			this.linkLabel1.TabIndex = 2;
@@ -230,11 +219,26 @@
 			this.linkLabel1.Text = "Misskeyで開く";
 			this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
 			// 
+			// textBox1
+			// 
+			this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.textBox1.BackColor = System.Drawing.Color.White;
+			this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.textBox1.Location = new System.Drawing.Point(12, 38);
+			this.textBox1.Multiline = true;
+			this.textBox1.Name = "textBox1";
+			this.textBox1.ReadOnly = true;
+			this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+			this.textBox1.Size = new System.Drawing.Size(449, 103);
+			this.textBox1.TabIndex = 3;
+			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 18F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(686, 404);
+			this.ClientSize = new System.Drawing.Size(584, 602);
 			this.Controls.Add(this.toolStripContainer1);
 			this.Font = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
 			this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -268,10 +272,10 @@
 		private System.Windows.Forms.ListView listView1;
 		private System.Windows.Forms.ColumnHeader columnHeader1;
 		private System.Windows.Forms.Button button1;
-		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.ColumnHeader columnHeader2;
 		private System.Windows.Forms.LinkLabel linkLabel1;
+		private System.Windows.Forms.TextBox textBox1;
 	}
 }
 
