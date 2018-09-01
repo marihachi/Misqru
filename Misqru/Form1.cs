@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Windows.Forms;
 
 namespace Misqru
@@ -106,7 +107,13 @@ namespace Misqru
 
 				this.followingUsers.Add(user);
 
-				var listItem = new ListViewItem(new[] { $"{user.Name} @{user.Username}" });
+				var usernameWithHost = user.Username;
+				if (user.Host != null)
+				{
+					usernameWithHost += $"@{user.Host}";
+				}
+
+				var listItem = new ListViewItem(new[] { user.Name, usernameWithHost });
 				listItem.Tag = user;
 				this.listView1.Items.Add(listItem);
 			}
@@ -135,25 +142,35 @@ namespace Misqru
 
 				this.followingUsers.Add(user);
 
-				var listItem = new ListViewItem(new[] { $"{user.Name} @{user.Username}" });
+				var usernameWithHost = user.Username;
+				if (user.Host != null)
+				{
+					usernameWithHost += $"@{user.Host}";
+				}
+
+				var listItem = new ListViewItem(new[] { user.Name, usernameWithHost });
 				listItem.Tag = user;
 				this.listView1.Items.Add(listItem);
 			}
 		}
 
 		private void updateDisplayedProfile(User user) {
-			if (user == null)
+			var isUserSelected = (user != null);
+
+			this.button1.Enabled = isUserSelected;
+			this.linkLabel1.Enabled = isUserSelected;
+
+			if (isUserSelected)
 			{
-				this.label1.Text = "";
-				this.label2.Text = "";
-				this.button1.Enabled = false;
-			}
-			else
-			{
-				this.label1.Text = $"{user.Name} @{user.Username}";
+				var usernameWithHost = user.Username;
+				if (user.Host != null)
+				{
+					usernameWithHost += $"@{user.Host}";
+				}
+
+				this.label1.Text = $"{user.Name} @{usernameWithHost}";
 				this.label2.Text = user.Description;
 
-				this.button1.Enabled = true;
 				if (user.HasPendingFollowRequestFromYou)
 				{
 					this.button1.Text = "承認待ち";
@@ -168,7 +185,13 @@ namespace Misqru
 				}
 
 				//this.button1.ForeColor = user.IsFollowing ? Color.LightSeaGreen : SystemColors.Control;
-			}			
+			}
+			else
+			{
+				this.label1.Text = "";
+				this.label2.Text = "";
+				this.button1.Text = "フォロー";
+			}
 		}
 
 		private void listView1_SelectedIndexChanged(object sender, EventArgs e)
@@ -225,5 +248,19 @@ namespace Misqru
 			// 画面を更新
 			updateDisplayedProfile(user);
         }
-    }
+
+		private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+		{
+			var listItem = this.listView1.SelectedItems[0];
+			var user = (User)listItem.Tag;
+
+			var usernameWithHost = user.Username;
+			if (user.Host != null)
+			{
+				usernameWithHost += $"@{user.Host}";
+			}
+
+			Process.Start($"https://{this.selectedAccount.Host}/@{usernameWithHost}");
+		}
+	}
 }
