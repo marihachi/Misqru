@@ -29,10 +29,10 @@ namespace Misqru
 		private MisskeyAccount selectedAccount
 		{
 			get {
-				if (this.toolStripComboBox1.SelectedIndex == -1)
+				if (this.accountComboBox.SelectedIndex == -1)
 					return null;
 
-				return this.accounts[this.toolStripComboBox1.SelectedIndex];
+				return this.accounts[this.accountComboBox.SelectedIndex];
 			}
 		}
 
@@ -64,17 +64,17 @@ namespace Misqru
 
 			// 構成
 			foreach (var account in this.accounts)
-				this.toolStripComboBox1.Items.Add($"{account.Username}@{account.Host}");
+				this.accountComboBox.Items.Add($"{account.Username}@{account.Host}");
 
 			// 「さらに取得」ボタンの有効状態
-			this.toolStripButton2.Enabled = false;
+			this.readMoreButton.Enabled = false;
 
 			updateDisplayedProfile(null);
 
-			this.listView1.Focus();
+			this.userListView.Focus();
 		}
 
-		private void toolStripButton1_Click(object sender, EventArgs e)
+		private void settingButton_Click(object sender, EventArgs e)
 		{
 			var f = new SettingForm(this.setting);
 			f.ShowDialog();
@@ -83,16 +83,16 @@ namespace Misqru
 			if (f.NeedUpdateAccountsList)
 			{
 				// 再構成
-				this.toolStripComboBox1.Items.Clear();
+				this.accountComboBox.Items.Clear();
 				foreach (var account in this.accounts)
-					this.toolStripComboBox1.Items.Add($"{account.Username}@{account.Host}");
+					this.accountComboBox.Items.Add($"{account.Username}@{account.Host}");
 			}
 		}
 
-		private async void toolStripButton2_Click(object sender, EventArgs e)
+		private async void readMoreButton_Click(object sender, EventArgs e)
 		{
 			// 「さらに取得」ボタンを無効化
-			this.toolStripButton2.Enabled = false;
+			this.readMoreButton.Enabled = false;
 
 			UserSequence followings;
 			try
@@ -108,7 +108,7 @@ namespace Misqru
 			this.nextCursor = followings.NextCursor;
 
 			// 「さらに取得」ボタンを必要に応じて有効化
-			this.toolStripButton2.Enabled = (this.nextCursor != null);
+			this.readMoreButton.Enabled = (this.nextCursor != null);
 
 			foreach (var user in followings.Users)
 			{
@@ -119,16 +119,19 @@ namespace Misqru
 				if (user.Host != null)
 					usernameWithHost += $"@{user.Host}";
 
-				var listItem = new ListViewItem(new[] { user.Name, usernameWithHost });
-				listItem.Tag = user;
-				this.listView1.Items.Add(listItem);
+				var listItem = new ListViewItem(new[] { user.Name, usernameWithHost })
+				{
+					Tag = user
+				};
+
+				this.userListView.Items.Add(listItem);
 			}
 		}
 
-		private async void toolStripComboBox1_SelectedIndexChanged(object sender, EventArgs e)
+		private async void accountComboBox_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			// 「さらに取得」ボタンを無効化
-			this.toolStripButton2.Enabled = false;
+			this.readMoreButton.Enabled = false;
 
 			if (this.selectedAccount == null)
 				return;
@@ -142,10 +145,10 @@ namespace Misqru
 			this.nextCursor = followings.NextCursor;
 
 			// 「さらに取得」ボタンを必要に応じて有効化
-			this.toolStripButton2.Enabled = (this.nextCursor != null);
+			this.readMoreButton.Enabled = (this.nextCursor != null);
 
 			this.followingUsers.Clear();
-			this.listView1.Items.Clear();
+			this.userListView.Items.Clear();
 
 			foreach (var user in followings.Users)
 			{
@@ -156,18 +159,21 @@ namespace Misqru
 				if (user.Host != null)
 					usernameWithHost += $"@{user.Host}";
 
-				var listItem = new ListViewItem(new[] { user.Name, usernameWithHost });
-				listItem.Tag = user;
-				this.listView1.Items.Add(listItem);
+				var listItem = new ListViewItem(new[] { user.Name, usernameWithHost })
+				{
+					Tag = user
+				};
+
+				this.userListView.Items.Add(listItem);
 			}
 		}
 
 		private void updateDisplayedProfile(User user) {
 			var isUserSelected = (user != null);
 
-			this.button1.Enabled = isUserSelected;
-			this.linkLabel1.Enabled = isUserSelected;
-			this.textBox1.Enabled = isUserSelected;
+			this.followButton.Enabled = isUserSelected;
+			this.openMisskeyLink.Enabled = isUserSelected;
+			this.DescriptionBox.Enabled = isUserSelected;
 
 			if (isUserSelected)
 			{
@@ -176,31 +182,31 @@ namespace Misqru
 				if (user.Host != null)
 					usernameWithHost += $"@{user.Host}";
 
-				this.label1.Text = $"{user.Name} @{usernameWithHost}";
-				this.textBox1.Text = user.Description;
+				this.NameLabel.Text = $"{user.Name} @{usernameWithHost}";
+				this.DescriptionBox.Text = user.Description;
 
 				if (user.HasPendingFollowRequestFromYou)
-					this.button1.Text = "承認待ち";
+					this.followButton.Text = "承認待ち";
 				else if (user.IsFollowing)
-					this.button1.Text = "フォロー中";
+					this.followButton.Text = "フォロー中";
 				else
-					this.button1.Text = "フォロー";
+					this.followButton.Text = "フォロー";
 
 				//this.button1.ForeColor = user.IsFollowing ? Color.LightSeaGreen : SystemColors.Control;
 			}
 			else
 			{
-				this.label1.Text = "";
-				this.textBox1.Text = "";
-				this.button1.Text = "フォロー";
+				this.NameLabel.Text = "";
+				this.DescriptionBox.Text = "";
+				this.followButton.Text = "フォロー";
 			}
 		}
 
-		private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+		private void userListView_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			if (this.listView1.SelectedItems.Count != 0)
+			if (this.userListView.SelectedItems.Count != 0)
 			{
-				var listItem = this.listView1.SelectedItems[0];
+				var listItem = this.userListView.SelectedItems[0];
 				var user = (User)listItem.Tag;
 
 				// 画面を更新
@@ -213,9 +219,9 @@ namespace Misqru
 			}
 		}
 
-        private async void button1_Click(object sender, EventArgs e)
+        private async void followButton_Click(object sender, EventArgs e)
         {
-			var listItem = this.listView1.SelectedItems[0];
+			var listItem = this.userListView.SelectedItems[0];
 			var user = (User)listItem.Tag;
 
 			try
@@ -245,9 +251,9 @@ namespace Misqru
 			updateDisplayedProfile(user);
         }
 
-		private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+		private void openMisskeyLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
 		{
-			var listItem = this.listView1.SelectedItems[0];
+			var listItem = this.userListView.SelectedItems[0];
 			var user = (User)listItem.Tag;
 
 			var usernameWithHost = user.Username;

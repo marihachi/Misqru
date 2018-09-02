@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Reflection;
 using System.Windows.Forms;
 
 namespace Misqru
@@ -65,6 +66,10 @@ namespace Misqru
 
 		private void SettingForm_Load(object sender, EventArgs e)
 		{
+			var version = Assembly.GetExecutingAssembly().GetName().Version;
+
+			this.versionLabel.Text = $"v{version.Major}.{version.Minor}.{version.Build}";
+
 			this.removeInstanceButton.Enabled = false;
 
 			// リストの項目を構成

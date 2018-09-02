@@ -30,21 +30,22 @@
 		{
 			this.toolStrip1 = new System.Windows.Forms.ToolStrip();
 			this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
-			this.toolStripComboBox1 = new System.Windows.Forms.ToolStripComboBox();
-			this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+			this.accountComboBox = new System.Windows.Forms.ToolStripComboBox();
+			this.settingButton = new System.Windows.Forms.ToolStripButton();
 			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
 			this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-			this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
+			this.readMoreButton = new System.Windows.Forms.ToolStripButton();
 			this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
-			this.listView1 = new System.Windows.Forms.ListView();
+			this.userListView = new System.Windows.Forms.ListView();
 			this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.splitter1 = new System.Windows.Forms.Splitter();
 			this.panel1 = new System.Windows.Forms.Panel();
-			this.label1 = new System.Windows.Forms.Label();
-			this.button1 = new System.Windows.Forms.Button();
-			this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-			this.linkLabel1 = new System.Windows.Forms.LinkLabel();
-			this.textBox1 = new System.Windows.Forms.TextBox();
+			this.DescriptionBox = new System.Windows.Forms.TextBox();
+			this.openMisskeyLink = new System.Windows.Forms.LinkLabel();
+			this.NameLabel = new System.Windows.Forms.Label();
+			this.followButton = new System.Windows.Forms.Button();
+			this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
 			this.toolStrip1.SuspendLayout();
 			this.toolStripContainer1.ContentPanel.SuspendLayout();
 			this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
@@ -59,11 +60,12 @@
 			this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
 			this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripLabel1,
-            this.toolStripComboBox1,
-            this.toolStripButton1,
+            this.accountComboBox,
+            this.settingButton,
             this.toolStripSeparator1,
             this.toolStripSeparator2,
-            this.toolStripButton2});
+            this.readMoreButton,
+            this.toolStripSeparator3});
 			this.toolStrip1.Location = new System.Drawing.Point(0, 0);
 			this.toolStrip1.Name = "toolStrip1";
 			this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
@@ -78,21 +80,22 @@
 			this.toolStripLabel1.Size = new System.Drawing.Size(73, 23);
 			this.toolStripLabel1.Text = "アカウント:";
 			// 
-			// toolStripComboBox1
+			// accountComboBox
 			// 
-			this.toolStripComboBox1.Name = "toolStripComboBox1";
-			this.toolStripComboBox1.Size = new System.Drawing.Size(150, 26);
-			this.toolStripComboBox1.SelectedIndexChanged += new System.EventHandler(this.toolStripComboBox1_SelectedIndexChanged);
+			this.accountComboBox.Name = "accountComboBox";
+			this.accountComboBox.Size = new System.Drawing.Size(150, 26);
+			this.accountComboBox.Text = "選択してください";
+			this.accountComboBox.SelectedIndexChanged += new System.EventHandler(this.accountComboBox_SelectedIndexChanged);
 			// 
-			// toolStripButton1
+			// settingButton
 			// 
-			this.toolStripButton1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-			this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-			this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.toolStripButton1.Name = "toolStripButton1";
-			this.toolStripButton1.Size = new System.Drawing.Size(48, 23);
-			this.toolStripButton1.Text = "設定...";
-			this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
+			this.settingButton.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+			this.settingButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+			this.settingButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.settingButton.Name = "settingButton";
+			this.settingButton.Size = new System.Drawing.Size(48, 23);
+			this.settingButton.Text = "設定...";
+			this.settingButton.Click += new System.EventHandler(this.settingButton_Click);
 			// 
 			// toolStripSeparator1
 			// 
@@ -105,21 +108,21 @@
 			this.toolStripSeparator2.Name = "toolStripSeparator2";
 			this.toolStripSeparator2.Size = new System.Drawing.Size(6, 26);
 			// 
-			// toolStripButton2
+			// readMoreButton
 			// 
-			this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-			this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.toolStripButton2.Name = "toolStripButton2";
-			this.toolStripButton2.Size = new System.Drawing.Size(72, 23);
-			this.toolStripButton2.Text = "さらに取得";
-			this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
+			this.readMoreButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+			this.readMoreButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.readMoreButton.Name = "readMoreButton";
+			this.readMoreButton.Size = new System.Drawing.Size(72, 23);
+			this.readMoreButton.Text = "さらに取得";
+			this.readMoreButton.Click += new System.EventHandler(this.readMoreButton_Click);
 			// 
 			// toolStripContainer1
 			// 
 			// 
 			// toolStripContainer1.ContentPanel
 			// 
-			this.toolStripContainer1.ContentPanel.Controls.Add(this.listView1);
+			this.toolStripContainer1.ContentPanel.Controls.Add(this.userListView);
 			this.toolStripContainer1.ContentPanel.Controls.Add(this.splitter1);
 			this.toolStripContainer1.ContentPanel.Controls.Add(this.panel1);
 			this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(584, 576);
@@ -134,27 +137,32 @@
 			// 
 			this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.toolStrip1);
 			// 
-			// listView1
+			// userListView
 			// 
-			this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+			this.userListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2});
-			this.listView1.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.listView1.FullRowSelect = true;
-			this.listView1.GridLines = true;
-			this.listView1.Location = new System.Drawing.Point(0, 0);
-			this.listView1.MultiSelect = false;
-			this.listView1.Name = "listView1";
-			this.listView1.Size = new System.Drawing.Size(584, 419);
-			this.listView1.TabIndex = 3;
-			this.listView1.UseCompatibleStateImageBehavior = false;
-			this.listView1.View = System.Windows.Forms.View.Details;
-			this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
+			this.userListView.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.userListView.FullRowSelect = true;
+			this.userListView.GridLines = true;
+			this.userListView.Location = new System.Drawing.Point(0, 0);
+			this.userListView.MultiSelect = false;
+			this.userListView.Name = "userListView";
+			this.userListView.Size = new System.Drawing.Size(584, 419);
+			this.userListView.TabIndex = 3;
+			this.userListView.UseCompatibleStateImageBehavior = false;
+			this.userListView.View = System.Windows.Forms.View.Details;
+			this.userListView.SelectedIndexChanged += new System.EventHandler(this.userListView_SelectedIndexChanged);
 			// 
 			// columnHeader1
 			// 
 			this.columnHeader1.Text = "名前";
 			this.columnHeader1.Width = 200;
+			// 
+			// columnHeader2
+			// 
+			this.columnHeader2.Text = "ユーザ名";
+			this.columnHeader2.Width = 230;
 			// 
 			// splitter1
 			// 
@@ -169,73 +177,74 @@
 			// panel1
 			// 
 			this.panel1.BackColor = System.Drawing.Color.White;
-			this.panel1.Controls.Add(this.textBox1);
-			this.panel1.Controls.Add(this.linkLabel1);
-			this.panel1.Controls.Add(this.label1);
-			this.panel1.Controls.Add(this.button1);
+			this.panel1.Controls.Add(this.DescriptionBox);
+			this.panel1.Controls.Add(this.openMisskeyLink);
+			this.panel1.Controls.Add(this.NameLabel);
+			this.panel1.Controls.Add(this.followButton);
 			this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
 			this.panel1.Location = new System.Drawing.Point(0, 423);
 			this.panel1.Name = "panel1";
 			this.panel1.Size = new System.Drawing.Size(584, 153);
 			this.panel1.TabIndex = 1;
 			// 
-			// label1
+			// DescriptionBox
 			// 
-			this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.label1.AutoEllipsis = true;
-			this.label1.Font = new System.Drawing.Font("メイリオ", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-			this.label1.Location = new System.Drawing.Point(12, 10);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(449, 23);
-			this.label1.TabIndex = 1;
-			this.label1.Text = "名前";
-			// 
-			// button1
-			// 
-			this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.button1.Location = new System.Drawing.Point(468, 6);
-			this.button1.Name = "button1";
-			this.button1.Size = new System.Drawing.Size(104, 27);
-			this.button1.TabIndex = 0;
-			this.button1.Text = "フォロー";
-			this.button1.UseVisualStyleBackColor = true;
-			this.button1.Click += new System.EventHandler(this.button1_Click);
-			// 
-			// columnHeader2
-			// 
-			this.columnHeader2.Text = "ユーザ名";
-			this.columnHeader2.Width = 200;
-			// 
-			// linkLabel1
-			// 
-			this.linkLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.linkLabel1.AutoSize = true;
-			this.linkLabel1.Location = new System.Drawing.Point(467, 38);
-			this.linkLabel1.Name = "linkLabel1";
-			this.linkLabel1.Size = new System.Drawing.Size(90, 18);
-			this.linkLabel1.TabIndex = 2;
-			this.linkLabel1.TabStop = true;
-			this.linkLabel1.Text = "Misskeyで開く";
-			this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
-			// 
-			// textBox1
-			// 
-			this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+			this.DescriptionBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.textBox1.BackColor = System.Drawing.Color.White;
-			this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-			this.textBox1.Location = new System.Drawing.Point(12, 38);
-			this.textBox1.Multiline = true;
-			this.textBox1.Name = "textBox1";
-			this.textBox1.ReadOnly = true;
-			this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-			this.textBox1.Size = new System.Drawing.Size(449, 103);
-			this.textBox1.TabIndex = 3;
+			this.DescriptionBox.BackColor = System.Drawing.Color.White;
+			this.DescriptionBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.DescriptionBox.Location = new System.Drawing.Point(12, 38);
+			this.DescriptionBox.Multiline = true;
+			this.DescriptionBox.Name = "DescriptionBox";
+			this.DescriptionBox.ReadOnly = true;
+			this.DescriptionBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+			this.DescriptionBox.Size = new System.Drawing.Size(449, 103);
+			this.DescriptionBox.TabIndex = 3;
+			// 
+			// openMisskeyLink
+			// 
+			this.openMisskeyLink.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.openMisskeyLink.AutoSize = true;
+			this.openMisskeyLink.Location = new System.Drawing.Point(467, 38);
+			this.openMisskeyLink.Name = "openMisskeyLink";
+			this.openMisskeyLink.Size = new System.Drawing.Size(90, 18);
+			this.openMisskeyLink.TabIndex = 2;
+			this.openMisskeyLink.TabStop = true;
+			this.openMisskeyLink.Text = "Misskeyで開く";
+			this.openMisskeyLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.openMisskeyLink_LinkClicked);
+			// 
+			// NameLabel
+			// 
+			this.NameLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.NameLabel.AutoEllipsis = true;
+			this.NameLabel.Font = new System.Drawing.Font("メイリオ", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+			this.NameLabel.Location = new System.Drawing.Point(12, 10);
+			this.NameLabel.Name = "NameLabel";
+			this.NameLabel.Size = new System.Drawing.Size(449, 23);
+			this.NameLabel.TabIndex = 1;
+			this.NameLabel.Text = "名前";
+			// 
+			// followButton
+			// 
+			this.followButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.followButton.Location = new System.Drawing.Point(468, 6);
+			this.followButton.Name = "followButton";
+			this.followButton.Size = new System.Drawing.Size(104, 27);
+			this.followButton.TabIndex = 0;
+			this.followButton.Text = "フォロー";
+			this.followButton.UseVisualStyleBackColor = true;
+			this.followButton.Click += new System.EventHandler(this.followButton_Click);
+			// 
+			// toolStripSeparator3
+			// 
+			this.toolStripSeparator3.Name = "toolStripSeparator3";
+			this.toolStripSeparator3.Size = new System.Drawing.Size(6, 26);
 			// 
 			// Form1
 			// 
+			this.AcceptButton = this.followButton;
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 18F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(584, 602);
@@ -261,21 +270,22 @@
 		#endregion
 		private System.Windows.Forms.ToolStrip toolStrip1;
 		private System.Windows.Forms.ToolStripLabel toolStripLabel1;
-		private System.Windows.Forms.ToolStripComboBox toolStripComboBox1;
-		private System.Windows.Forms.ToolStripButton toolStripButton1;
+		private System.Windows.Forms.ToolStripComboBox accountComboBox;
+		private System.Windows.Forms.ToolStripButton settingButton;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
 		private System.Windows.Forms.ToolStripContainer toolStripContainer1;
 		private System.Windows.Forms.Panel panel1;
 		private System.Windows.Forms.Splitter splitter1;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-		private System.Windows.Forms.ToolStripButton toolStripButton2;
-		private System.Windows.Forms.ListView listView1;
+		private System.Windows.Forms.ToolStripButton readMoreButton;
+		private System.Windows.Forms.ListView userListView;
 		private System.Windows.Forms.ColumnHeader columnHeader1;
-		private System.Windows.Forms.Button button1;
-		private System.Windows.Forms.Label label1;
+		private System.Windows.Forms.Button followButton;
+		private System.Windows.Forms.Label NameLabel;
 		private System.Windows.Forms.ColumnHeader columnHeader2;
-		private System.Windows.Forms.LinkLabel linkLabel1;
-		private System.Windows.Forms.TextBox textBox1;
+		private System.Windows.Forms.LinkLabel openMisskeyLink;
+		private System.Windows.Forms.TextBox DescriptionBox;
+		private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
 	}
 }
 

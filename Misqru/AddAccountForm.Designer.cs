@@ -72,8 +72,9 @@
 			this.label2.TabIndex = 5;
 			this.label2.Text = "アプリ連携の許可を待っています...";
 			// 
-			// AddInstanceForm
+			// AddAccountForm
 			// 
+			this.AcceptButton = this.button1;
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 18F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(297, 156);
@@ -83,7 +84,7 @@
 			this.Controls.Add(this.hostBox);
 			this.Font = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
 			this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-			this.Name = "AddInstanceForm";
+			this.Name = "AddAccountForm";
 			this.Text = "アカウントの追加";
 			this.Load += new System.EventHandler(this.AddInstanceForm_Load);
 			this.ResumeLayout(false);
