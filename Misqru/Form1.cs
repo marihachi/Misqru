@@ -86,6 +86,12 @@ namespace Misqru
 				this.accountComboBox.Items.Clear();
 				foreach (var account in this.accounts)
 					this.accountComboBox.Items.Add($"{account.Username}@{account.Host}");
+
+				// アカウント非選択の状態に画面を初期化
+				this.userListView.Items.Clear();
+				this.readMoreButton.Enabled = false;
+				updateDisplayedProfile(null);
+				this.accountComboBox.Text = "選択してください";
 			}
 		}
 
