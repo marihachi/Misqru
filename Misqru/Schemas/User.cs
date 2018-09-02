@@ -1,14 +1,9 @@
 ﻿using Newtonsoft.Json.Linq;
 
-namespace Misqru.Models
+namespace Misqru.Schemas
 {
 	public class User
 	{
-		public static User FromJObject(JObject data)
-		{
-			return data.ToObject<User>();
-		}
-
 		public string Id { get; set; }
 
 		public string Username { get; set; }
@@ -26,5 +21,7 @@ namespace Misqru.Models
 		public bool IsLocked { get; set; }
 
 		public bool HasPendingFollowRequestFromYou { get; set; }
+
+		public static User FromJObject(JObject data) => data.ToObject<User>();
 	}
 }

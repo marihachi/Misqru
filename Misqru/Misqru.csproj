@@ -53,9 +53,10 @@
   <ItemGroup>
     <Compile Include="ApiManager.cs" />
     <Compile Include="CollectionExtensions.cs" />
-    <Compile Include="Models\User.cs" />
+    <Compile Include="Schemas\User.cs" />
     <Compile Include="Models\MisskeyAccount.cs" />
     <Compile Include="Models\Setting.cs" />
+    <Compile Include="Schemas\UserSequence.cs" />
     <Compile Include="SettingForm.cs">
       <SubType>Form</SubType>
     </Compile>

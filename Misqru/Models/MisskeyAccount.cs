@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Newtonsoft.Json.Linq;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Misqru.Models
@@ -15,17 +16,17 @@ namespace Misqru.Models
 
 		public string Host { get; set; }
 
-
 		public string Token { get; set; }
 
 		public string Username { get; set; }
 
 		public string Id { get; set; }
 
-		public async Task<dynamic> Request(string endpoint, Dictionary<string, object> ps)
+		public async Task<JObject> Request(string endpoint, Dictionary<string, object> ps)
 		{
 			ps.Add("i", this.Token);
-			return await Misq.Core.Request($"https://{this.Host}", endpoint, ps);
+
+			return (JObject)await Misq.Core.Request($"https://{this.Host}", endpoint, ps);
 		}
 
 		public static async Task<MisskeyAccount> Authorize(MisskeyInstance instance)

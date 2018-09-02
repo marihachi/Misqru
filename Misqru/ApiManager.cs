@@ -1,5 +1,6 @@
 ﻿using Misqru.Models;
-using Newtonsoft.Json.Linq;
+using Misqru.Schemas;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -7,38 +8,75 @@ namespace Misqru
 {
 	public class ApiManager
 	{
-		public ApiManager(MisskeyAccount account)
+		public ApiManager(MisskeyAccount account = null)
 		{
 			this.Account = account;
 		}
 
 		public MisskeyAccount Account { get; set; }
 
+		public async Task<UserSequence> GetFollowings(int limit = 100, string cursor = null)
+		{
+			if (this.Account == null)
+				throw new InvalidOperationException();
+
+			var param = new Dictionary<string, object>
+			{
+				["userId"] = this.Account.Id,
+				["limit"] = limit
+			};
+
+			if (cursor != null)
+				param.Add("cursor", cursor);
+
+			var res = await this.Account.Request("users/following", param);
+
+			return UserSequence.FromJObject(res);
+		}
+
 		public async Task<User> Follow(string userId)
 		{
-			var obj = (JObject)await this.Account.Request("following/create", new Dictionary<string, object>
+			if (this.Account == null)
+				throw new InvalidOperationException();
+
+			var param = new Dictionary<string, object>
 			{
 				["userId"] = userId
-			});
-			return User.FromJObject(obj);
+			};
+
+			var res = await this.Account.Request("following/create", param);
+
+			return User.FromJObject(res);
 		}
 
 		public async Task<User> Unfollow(string userId)
 		{
-			var obj = (JObject)await this.Account.Request("following/delete", new Dictionary<string, object>
+			if (this.Account == null)
+				throw new InvalidOperationException();
+
+			var param = new Dictionary<string, object>
 			{
 				["userId"] = userId
-			});
-			return User.FromJObject(obj);
+			};
+
+			var res = await this.Account.Request("following/delete", param);
+
+			return User.FromJObject(res);
 		}
 
 		public async Task<User> CancelFollowRequest(string userId)
 		{
-			var obj = (JObject)await this.Account.Request("following/requests/cancel", new Dictionary<string, object>
+			if (this.Account == null)
+				throw new InvalidOperationException();
+
+			var param = new Dictionary<string, object>
 			{
 				["userId"] = userId
-			});
-			return User.FromJObject(obj);
+			};
+
+			var res = await this.Account.Request("following/requests/cancel", param);
+
+			return User.FromJObject(res);
 		}
 	}
 }
