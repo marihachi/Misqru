@@ -49,7 +49,7 @@ namespace Misqru
 			// 設定ファイルのバージョンを判定
 			if (this.setting._Version != Meta.SettingLatestVersion)
 			{
-				if(this.setting._Version == 1)
+				if (this.setting._Version == 1)
 				{
 					// "setting file is old format. please remove setting.json and re-execute Misqru."
 					MessageBox.Show("古い形式の設定ファイルです。\r\nsetting.jsonを削除してMisqruを再実行してください。", "情報", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -147,7 +147,7 @@ namespace Misqru
 
 			// フォロー一覧を取得
 			var followings = await this.api.GetFollowings();
-			
+
 			this.nextCursor = followings.NextCursor;
 
 			// 「さらに取得」ボタンを必要に応じて有効化
@@ -174,7 +174,8 @@ namespace Misqru
 			}
 		}
 
-		private void updateDisplayedProfile(User user) {
+		private void updateDisplayedProfile(User user)
+		{
 			var isUserSelected = (user != null);
 
 			this.followButton.Enabled = isUserSelected;
@@ -225,8 +226,8 @@ namespace Misqru
 			}
 		}
 
-        private async void followButton_Click(object sender, EventArgs e)
-        {
+		private async void followButton_Click(object sender, EventArgs e)
+		{
 			var listItem = this.userListView.SelectedItems[0];
 			var user = (User)listItem.Tag;
 
@@ -255,7 +256,7 @@ namespace Misqru
 
 			// 画面を更新
 			updateDisplayedProfile(user);
-        }
+		}
 
 		private void openMisskeyLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
 		{
