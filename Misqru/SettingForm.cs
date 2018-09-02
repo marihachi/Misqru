@@ -66,9 +66,9 @@ namespace Misqru
 
 		private void SettingForm_Load(object sender, EventArgs e)
 		{
-			var version = Assembly.GetExecutingAssembly().GetName().Version;
+			var ver = Assembly.GetExecutingAssembly().GetName().Version;
 
-			this.versionLabel.Text = $"v{version.Major}.{version.Minor}.{version.Build}";
+			this.versionLabel.Text = $"v{ver.Major}.{ver.Minor}.{ver.Build}";
 
 			this.removeInstanceButton.Enabled = false;
 

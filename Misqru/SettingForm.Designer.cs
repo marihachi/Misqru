@@ -35,10 +35,10 @@
 			this.tabControl1 = new System.Windows.Forms.TabControl();
 			this.tabPage1 = new System.Windows.Forms.TabPage();
 			this.tabPage2 = new System.Windows.Forms.TabPage();
-			this.LicenseLinkLabel = new System.Windows.Forms.LinkLabel();
-			this.appNameLabel = new System.Windows.Forms.Label();
-			this.versionLabel = new System.Windows.Forms.Label();
 			this.appDescriptionLabel = new System.Windows.Forms.Label();
+			this.versionLabel = new System.Windows.Forms.Label();
+			this.appNameLabel = new System.Windows.Forms.Label();
+			this.LicenseLinkLabel = new System.Windows.Forms.LinkLabel();
 			this.tabControl1.SuspendLayout();
 			this.tabPage1.SuspendLayout();
 			this.tabPage2.SuspendLayout();
@@ -132,26 +132,14 @@
 			this.tabPage2.Text = "About";
 			this.tabPage2.UseVisualStyleBackColor = true;
 			// 
-			// LicenseLinkLabel
+			// appDescriptionLabel
 			// 
-			this.LicenseLinkLabel.AutoSize = true;
-			this.LicenseLinkLabel.Location = new System.Drawing.Point(24, 132);
-			this.LicenseLinkLabel.Name = "LicenseLinkLabel";
-			this.LicenseLinkLabel.Size = new System.Drawing.Size(51, 18);
-			this.LicenseLinkLabel.TabIndex = 6;
-			this.LicenseLinkLabel.TabStop = true;
-			this.LicenseLinkLabel.Text = "License";
-			this.LicenseLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
-			// 
-			// appNameLabel
-			// 
-			this.appNameLabel.AutoSize = true;
-			this.appNameLabel.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-			this.appNameLabel.Location = new System.Drawing.Point(22, 55);
-			this.appNameLabel.Name = "appNameLabel";
-			this.appNameLabel.Size = new System.Drawing.Size(74, 28);
-			this.appNameLabel.TabIndex = 7;
-			this.appNameLabel.Text = "Misqru";
+			this.appDescriptionLabel.AutoSize = true;
+			this.appDescriptionLabel.Location = new System.Drawing.Point(24, 89);
+			this.appDescriptionLabel.Name = "appDescriptionLabel";
+			this.appDescriptionLabel.Size = new System.Drawing.Size(320, 18);
+			this.appDescriptionLabel.TabIndex = 9;
+			this.appDescriptionLabel.Text = "A desktop app to prepare user-followings for Misskey.";
 			// 
 			// versionLabel
 			// 
@@ -163,14 +151,26 @@
 			this.versionLabel.TabIndex = 8;
 			this.versionLabel.Text = "v0.0.0";
 			// 
-			// appDescriptionLabel
+			// appNameLabel
 			// 
-			this.appDescriptionLabel.AutoSize = true;
-			this.appDescriptionLabel.Location = new System.Drawing.Point(24, 89);
-			this.appDescriptionLabel.Name = "appDescriptionLabel";
-			this.appDescriptionLabel.Size = new System.Drawing.Size(320, 18);
-			this.appDescriptionLabel.TabIndex = 9;
-			this.appDescriptionLabel.Text = "A desktop app to prepare user-followings for Misskey.";
+			this.appNameLabel.AutoSize = true;
+			this.appNameLabel.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+			this.appNameLabel.Location = new System.Drawing.Point(22, 55);
+			this.appNameLabel.Name = "appNameLabel";
+			this.appNameLabel.Size = new System.Drawing.Size(74, 28);
+			this.appNameLabel.TabIndex = 7;
+			this.appNameLabel.Text = "Misqru";
+			// 
+			// LicenseLinkLabel
+			// 
+			this.LicenseLinkLabel.AutoSize = true;
+			this.LicenseLinkLabel.Location = new System.Drawing.Point(24, 132);
+			this.LicenseLinkLabel.Name = "LicenseLinkLabel";
+			this.LicenseLinkLabel.Size = new System.Drawing.Size(51, 18);
+			this.LicenseLinkLabel.TabIndex = 6;
+			this.LicenseLinkLabel.TabStop = true;
+			this.LicenseLinkLabel.Text = "License";
+			this.LicenseLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
 			// 
 			// SettingForm
 			// 
