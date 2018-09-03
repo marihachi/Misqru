@@ -165,7 +165,7 @@ namespace Misqru
 				if (user.Host != null)
 					usernameWithHost += $"@{user.Host}";
 
-				var listItem = new ListViewItem(new[] { user.Name, usernameWithHost })
+				var listItem = new ListViewItem(new[] { user.Name ?? user.Username, usernameWithHost })
 				{
 					Tag = user
 				};
